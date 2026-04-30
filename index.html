@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anil Singh - Computer Science Student at University of Wolverhampton | Aspiring Web Developer">
+    <title>Anil Singh | CS Student & Developer</title>
+    
+    <!-- Google Fonts - Dancing Script + Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
+
+    <!-- Floating Particles -->
+    <div id="particles"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo cursive">Anil <span>Singh</span></a>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
+                <p class="greeting"><span class="wave">👋</span> Hello, I'm</p>
+                <h1 class="cursive glitch-text">Anil <span>Singh</span></h1>
+                <div class="typewriter">
+                    <span id="typewriter-text"></span><span class="cursor">|</span>
+                </div>
+                <p class="location"><i class="fas fa-map-marker-alt pulse-icon"></i> University of Wolverhampton, UK</p>
+                <p class="hero-bio">
+                    Full-time Computer Science student passionate about web development. 
+                    Building projects with HTML, CSS, JavaScript, PHP & CodeIgniter.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat" data-aos="zoom-in" data-aos-delay="200">
+                        <span class="stat-number counter" data-target="7">0</span>
+                        <span class="stat-label">Languages</span>
+                    </div>
+                    <div class="stat" data-aos="zoom-in" data-aos-delay="400">
+                        <span class="stat-number counter" data-target="3">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat" data-aos="zoom-in" data-aos-delay="600">
+                        <span class="stat-number counter" data-target="3">0</span>
+                        <span class="stat-label">Years Exp</span>
+                    </div>
+                </div>
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="800">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-code"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                </div>
+                <div class="hero-social" data-aos="fade-up" data-aos-delay="1000">
+                    <a href="https://github.com/Anil205707" target="_blank" class="social-icon" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank" class="social-icon" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.facebook.com/kushbaha.anilsingh/" target="_blank" class="social-icon" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/mindreader29/" target="_blank" class="social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@PASPRODUCTIONS0" target="_blank" class="social-icon" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
+                <div class="image-wrapper">
+                    <div class="image-border"></div>
+                    <img src="images/anil-photo.jpg" alt="Anil Singh">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title cursive">About <span>Me</span></h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Full-time Computer Science student building my future in tech</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-user"></i></div>
+                    <h3>Who I Am</h3>
+                    <p>Full-time CS student at University of Wolverhampton. I spend my days learning programming, building projects, and developing technical skills. Part-time Restaurant Manager at Burger & Sauces.</p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Education</h3>
+                    <p><strong>BSc Computer Science</strong><br>University of Wolverhampton (Current)</p>
+                    <p><strong>+2 Computer Science</strong><br>Bluebird School, Nepal (CGPA 3.34)</p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-language"></i></div>
+                    <h3>Languages</h3>
+                    <div class="lang-tags">
+                        <span>English</span><span>Hindi</span><span>Nepali</span>
+                        <span>Urdu</span><span>Maithili</span><span>Bhojpuri</span><span>Punjabi</span>
+                    </div>
+                </div>
+                <div class="about-card" data-aos="fade-left" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Interests</h3>
+                    <div class="lang-tags">
+                        <span>Coding</span><span>Cooking</span><span>Travelling</span><span>Reading</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-section" data-aos="fade-up">
+                <h3 class="sub-heading cursive">Technical Skills</h3>
+                <div class="skills-grid" id="skillsContainer">
+                    <!-- Skills load dynamically from localStorage -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EXPERIENCE SECTION ========== -->
+    <section id="experience" class="section section-alt">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title cursive">Work <span>Experience</span></h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Part-time work alongside full-time studies</p>
+            </div>
+
+            <div class="timeline-vertical" id="experienceContainer">
+                <!-- Experience loads dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title cursive">My <span>Projects</span></h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">What I'm building while studying</p>
+            </div>
+
+            <!-- GitHub Banner -->
+            <div class="github-banner" data-aos="zoom-in">
+                <i class="fab fa-github"></i>
+                <div>
+                    <h3 class="cursive">Check Out My GitHub</h3>
+                    <p>All my code and contributions live here</p>
+                    <a href="https://github.com/Anil205707" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Visit Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsContainer">
+                <!-- Projects load dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title cursive">Get In <span>Touch</span></h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Let's connect and build something together</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-cards" data-aos="fade-right">
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:anil20570729@gmail.com">anil20570729@gmail.com</a>
+                        </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:+447311306180">+44 7311 306180</a>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>241 Coleman Street, Wolverhampton, WV6 0RQ, UK</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-share-alt"></i>
+                        <div>
+                            <h4>Social Media</h4>
+                            <div class="info-social">
+                                <a href="https://github.com/Anil205707" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://www.facebook.com/kushbaha.anilsingh/" target="_blank"><i class="fab fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/mindreader29/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@PASPRODUCTIONS0" target="_blank"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" required>
+                                <label>Your Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" required>
+                                <label>Your Email</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject">
+                            <label>Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" required></textarea>
+                            <label>Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <a href="#home" class="footer-logo cursive">Anil <span>Singh</span></a>
+                <div class="footer-social">
+                    <a href="https://github.com/Anil205707" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/kushbaha.anilsingh/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/mindreader29/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@PASPRODUCTIONS0" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:anil20570729@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Anil Singh. Crafted with <i class="fas fa-heart pulse-icon"></i> in Wolverhampton, UK</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== ADMIN BUTTON (Hidden in footer) ========== -->
+    <a href="admin.html" class="admin-link" title="Admin Panel">
+        <i class="fas fa-cog"></i>
+    </a>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
