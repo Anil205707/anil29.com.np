@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Anil Singh</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ============================================
+           ADMIN LOGIN PAGE - Dark Cursive Theme
+           ============================================ */
+        
+        :root {
+            --bg: #06060c;
+            --card: #111122;
+            --accent: #2563eb;
+            --accent-light: #3b82f6;
+            --accent-glow: rgba(37, 99, 235, 0.3);
+            --gold: #f59e0b;
+            --text: #e8ecf1;
+            --text-secondary: #8892a4;
+            --text-muted: #5a6478;
+            --border: #1a1a30;
+            --error: #ef4444;
+            --error-bg: rgba(239, 68, 68, 0.1);
+            --success: #10b981;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+            background: #06060c;
+            color: #e8ecf1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cursive {
+            font-family: 'Dancing Script', cursive !important;
+            letter-spacing: 1px;
+        }
+
+        /* ========== ANIMATED BACKGROUND ========== */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Grid lines background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ========== LOGIN CONTAINER ========== */
+        .login-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 440px;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: #111122;
+            border: 1px solid #1a1a30;
+            border-radius: 16px;
+            padding: 45px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(37, 99, 235, 0.05);
+            animation: cardSlideIn 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb, #3b82f6, #f59e0b, #2563eb);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ========== LOGIN HEADER ========== */
+        .login-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .login-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.05));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 2px solid rgba(37, 99, 235, 0.2);
+            position: relative;
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(37, 99, 235, 0);
+            }
+        }
+
+        .login-icon-wrapper i {
+            font-size: 2rem;
+            color: #3b82f6;
+        }
+
+        .login-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #e8ecf1;
+        }
+
+        .login-header h1 span {
+            color: #3b82f6;
+        }
+
+        .login-header p {
+            color: #8892a4;
+            font-size: 0.9rem;
+        }
+
+        /* ========== FORM ========== */
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #8892a4;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #5a6478;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 15px 16px 15px 48px;
+            background: #0a0a16;
+            border: 1.5px solid #1a1a30;
+            border-radius: 10px;
+            color: #e8ecf1;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+            background: #0d0d1a;
+        }
+
+        .input-wrapper input:focus ~ i,
+        .input-wrapper input:focus + i {
+            color: #3b82f6;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #5a6478;
+        }
+
+        /* Password toggle */
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #5a6478;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+
+        .password-toggle:hover {
+            color: #3b82f6;
+        }
+
+        /* Remember me */
+        .remember-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: #8892a4;
+            font-size: 0.85rem;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #8892a4;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            color: #3b82f6;
+        }
+
+        /* Error message */
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            animation: shakeError 0.5s ease;
+        }
+
+        .error-message i {
+            margin-right: 6px;
+        }
+
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(4px); }
+        }
+
+        /* ========== BUTTON ========== */
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login:hover {
+            background: #3b82f6;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-login.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .btn-login.loading .btn-text {
+            visibility: hidden;
+        }
+
+        .btn-login.loading .spinner {
+            display: block;
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            position: absolute;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ========== BACK LINK ========== */
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back-link a {
+            color: #8892a4;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .back-link a:hover {
+            color: #3b82f6;
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .back-link i {
+            font-size: 0.8rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 25px;
+            }
+
+            .login-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .login-icon-wrapper {
+                width: 65px;
+                height: 65px;
+            }
+
+            .login-icon-wrapper i {
+                font-size: 1.6rem;
+            }
+
+            .remember-row {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <!-- Login Container -->
+    <div class="login-wrapper">
+        <div class="login-card">
+            
+            <!-- Header -->
+            <div class="login-header">
+                <div class="login-icon-wrapper">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h1 class="cursive">Admin <span>Login</span></h1>
+                <p>Secure access to manage your portfolio</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorText">Invalid username or password</span>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" autocomplete="off">
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            placeholder="Enter your username" 
+                            required 
+                            autocomplete="off"
+                        >
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            placeholder="Enter your password" 
+                            required 
+                            autocomplete="off"
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePassword()" tabindex="-1">
+                            <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember & Forgot -->
+                <div class="remember-row">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password" onclick="showForgotMessage()">Forgot password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-login" id="loginButton">
+                    <span class="btn-text">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </span>
+                    <div class="spinner"></div>
+                </button>
+            </form>
+        </div>
+
+        <!-- Back to Website -->
+        <div class="back-link">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i> Back to Website
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // ADMIN LOGIN PAGE - JavaScript
+        // ============================================
+
+        // ---------- BACKGROUND PARTICLES ----------
+        function createParticles() {
+            const container = document.getElementById('bgParticles');
+            const colors = ['#2563eb', '#3b82f6', '#f59e0b', '#8892a4'];
+            
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('bg-particle');
+                
+                const size = Math.random() * 4 + 1;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100;
+                const duration = Math.random() * 15 + 10;
+                const delay = Math.random() * 15;
+                
+                particle.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: ${color};
+                    left: ${left}%;
+                    animation-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                    box-shadow: 0 0 ${size * 4}px ${color}40;
+                `;
+                
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // ---------- PASSWORD TOGGLE ----------
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePasswordIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // ---------- FORGOT PASSWORD ----------
+        function showForgotMessage() {
+            const errorEl = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            
+            errorText.textContent = '🔐 Default credentials: Username: anil | Password: anil2024';
+            errorEl.style.display = 'block';
+            errorEl.style.background = 'rgba(37, 99, 235, 0.1)';
+            errorEl.style.border = '1px solid rgba(37, 99, 235, 0.3)';
+            errorEl.style.color = '#3b82f6';
+            
+            setTimeout(() => {
+                errorEl.style.display = 'none';
+                errorEl.style.background = 'rgba(239, 68, 68, 0.1)';
+                errorEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+                errorEl.style.color = '#ef4444';
+            }, 5000);
+        }
+
+        // ---------- SHOW ERROR ----------
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            
+            errorText.textContent = message;
+            errorEl.style.display = 'block';
+            errorEl.style.animation = 'none';
+            errorEl.offsetHeight; // Trigger reflow
+            errorEl.style.animation = 'shakeError 0.5s ease';
+            
+            setTimeout(() => {
+                errorEl.style.display = 'none';
+            }, 4000);
+        }
+
+        // ---------- LOGIN FORM SUBMIT ----------
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const rememberMe = document.getElementById('rememberMe').checked;
+            const loginButton = document.getElementById('loginButton');
+            
+            // 🔑 CREDENTIALS (Change these!)
+            const ADMIN_USERNAME = 'anil';
+            const ADMIN_PASSWORD = 'anil2024';
+            
+            // Validation
+            if (!username) {
+                showError('Please enter your username');
+                document.getElementById('username').focus();
+                return;
+            }
+            
+            if (!password) {
+                showError('Please enter your password');
+                document.getElementById('password').focus();
+                return;
+            }
+            
+            // Show loading
+            loginButton.classList.add('loading');
+            
+            // Simulate authentication delay
+            setTimeout(() => {
+                if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                    // Success!
+                    localStorage.setItem('admin_logged_in', 'true');
+                    localStorage.setItem('admin_login_time', Date.now());
+                    
+                    if (rememberMe) {
+                        localStorage.setItem('admin_remember', 'true');
+                    }
+                    
+                    // Success animation
+                    loginButton.classList.remove('loading');
+                    loginButton.style.background = '#10b981';
+                    loginButton.innerHTML = '<i class="fas fa-check-circle"></i> Access Granted!';
+                    
+                    // Redirect
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 800);
+                    
+                } else {
+                    // Failed
+                    loginButton.classList.remove('loading');
+                    showError('Invalid username or password. Please try again.');
+                    document.getElementById('password').value = '';
+                    document.getElementById('password').focus();
+                }
+            }, 1000);
+        });
+
+        // ---------- CHECK IF ALREADY LOGGED IN ----------
+        function checkExistingSession() {
+            const isLoggedIn = localStorage.getItem('admin_logged_in');
+            const loginTime = parseInt(localStorage.getItem('admin_login_time') || '0');
+            const remember = localStorage.getItem('admin_remember');
+            
+            if (isLoggedIn === 'true') {
+                // If "remember me" was checked, session lasts 7 days
+                const sessionDuration = remember === 'true' ? 7 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000;
+                
+                if (Date.now() - loginTime < sessionDuration) {
+                    // Still valid session, redirect to dashboard
+                    window.location.href = 'dashboard.html';
+                } else {
+                    // Session expired
+                    localStorage.removeItem('admin_logged_in');
+                    localStorage.removeItem('admin_login_time');
+                    localStorage.removeItem('admin_remember');
+                }
+            }
+        }
+
+        // Check on page load
+        checkExistingSession();
+
+        // ---------- KEYBOARD SHORTCUT ----------
+        document.addEventListener('keydown', function(e) {
+            // Press Enter to submit from any field
+            if (e.key === 'Enter') {
+                const activeElement = document.activeElement;
+                if (activeElement && (activeElement.id === 'username' || activeElement.id === 'password')) {
+                    document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+                }
+            }
+            
+            // Press Escape to go back to website
+            if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Auto-focus username field
+        document.getElementById('username').focus();
+
+        console.log('🔐 Admin Login Page Ready');
+        console.log('👤 Default: anil / anil2024');
+    </script>
+</body>
+</html>
